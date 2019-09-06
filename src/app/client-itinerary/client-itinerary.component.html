@@ -1,0 +1,161 @@
+<form [formGroup]="InsertClientForm" (ngSubmit) = "OnInsertClient()">
+    <div class="container">
+        <!-- <h2> Add Client and Itinerary </h2> -->
+        
+            <div class="form-group">
+            <label for="clientName">Client Name:</label>
+             <input type="text" class="form-control" id="clientName" placeholder="Enter name" formControlName="clientName"><br>
+          
+            <label for="projectName">Project Name:</label>
+            <input type="text" class="form-control" id="projectName" placeholder="Enter project name" formControlName="projectName"><br>
+
+            
+          
+            <label for="arrivalDate">Arrival Date:</label>
+            <input type="date" class="form-control" id="arrivalDate" formControlName="arrivalDate"><br>
+          
+            <label for="departureDate">Departure Date:</label>
+            <input type="date" class="form-control" id="departureDate" formControlName="departureDate"><br>
+          
+            <label for="agenda">Agenda:</label>
+            <input type="text" class="form-control" id="agenda" formControlName="agenda"><br>
+
+            <label for="account">Account:</label><br>
+             <select formControlName="account" >
+                <option value="CITI" [selected]=true>CITI</option>
+                            <option value="Royal Bank" >Royal Bank</option> 
+                              <option value="Bank of Canada">Bank of Canada</option>
+                              <option value="HDFC">HDFC</option>
+                              <option value="Others">Others</option>
+              </select> <br> <br>
+              
+            
+              <label for="event">Events:</label> <br>
+               <div class="dropdown">
+
+                    <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary"  href="/page.html">
+                    
+                    Select <span class="caret"></span></a>  
+                    
+                        <ul class="dropdown-menu multi-level"  role="menu" aria-labelledby="dropdownMenu" >
+
+                    
+                    
+                    <!-- <li class="dropdown-submenu" (mouseover)="onClick1($event)" > -->
+                            <li class="dropdown-submenu" >
+                    <a tabindex="-1" href="#">Meal</a>
+                    
+                    <ul class="dropdown-menu" (click)="onClick($event,'Meal')" >
+                    
+                    <li class="dropdown-submenu"></li>
+                    
+                    <li><a href="#">Unit-I Cafeteria</a></li>
+                    
+                    <li><a href="#">Unit-II cafeteria</a></li>
+                    
+                    </ul>
+                    
+                    </li> 
+                    
+                     <li class="dropdown-submenu">
+                    
+                    <a tabindex="-1" href="#">Meeting</a>
+                    
+                    <ul class="dropdown-menu" (click)="onClick($event,'Meeting')">
+                    
+                    <li class="dropdown-submenu"></li>
+                    
+                    <li><a href="#">Focus</a></li>
+                    
+                    <li><a href="#">Conclave</a></li>
+                    
+                    <li><a href="#">Aspire</a></li>
+                    
+                    <li><a href="#">Synergy</a></li>
+                    
+                    </ul>
+                    
+                    </li> 
+                    
+                    
+                    
+                    <li class="dropdown-submenu">
+                    
+                    <a tabindex="-1" href="#">Cab</a>
+                    
+                    <ul class="dropdown-menu" (click)="onClick($event,'Cab')">
+                    
+                    <li class="dropdown-submenu"></li>
+                    
+                    <li><a href="#">Airport-Hotel</a></li>
+                    
+                    <li><a href="#">Hotel-Airport</a></li>
+                    
+                    <li><a href="#">Hotel-Office</a></li>
+                    
+                    <li><a href="#">Office-Hotel</a></li>
+                    
+                    </ul>
+                    
+                    </li>
+                    
+                    
+                    
+                     <li class="dropdown-submenu">
+                    
+                    <a tabindex="-1" href="#">Hotel</a>
+                    
+                    <ul class="dropdown-menu" (click)="onClick($event,'Hotel')">
+                    
+                    <li class="dropdown-submenu"></li>
+                    
+                    <li><a href="#">Savoy-Suites</a></li>
+                    
+                    <li><a href="#">Crowne-Plaza</a></li>
+                    
+                    <li><a href="#">Fab-Sunshine</a></li>
+                    
+                    <li><a href="#">Treebo</a></li>
+                    
+                    <li><a href="#">Others</a></li>
+                    
+                    </ul>
+                    
+                    </li> 
+
+                    
+                    
+                </ul></div> 
+                <br><br>
+                      
+                <label for="eventStartTimeDate">Event Start Date And Time:</label>
+                <input type="date" class="form-control" (change)="getValues($event)" id="eventStartTimeDate" formControlName="eventStartTimeDate" ><br>
+                  
+                <label for="eventEndTimeDate">Event end Date And Time:</label>
+                <input type="date" class="form-control"  (change)="getValues1($event)"  id="eventEndTimeDate" formControlName="eventEndTimeDate"><br>
+                 
+                <button type="button" class="btn btn-primary" (click)="buttonEvent()">Add Event</button><br><br>
+             <label for="viewEvents">View Events:</label>
+             <!-- <input type="table" class="form-control" id="viewEvents" formControlName="viewEvents"><br>  -->
+             <div class="container">
+                    <table class="table table-dark table-striped">
+                  <tr>
+                    <th>Event</th>
+                  <th>Start Date-Time</th>
+                  <th>Start Date-Time</th>
+                </tr>
+                <tr *ngFor="let eventVal of  eventValue;index as i">
+                    <td>{{eventVal.event}}</td>
+                    <td>{{eventVal.eventStartTimeDate}}</td>
+                    <td>{{eventVal.eventEndTimeDate}}</td>
+                    </tr>
+                </table>
+                </div>
+           </div><br>
+          
+          <button type="submit" class="btn btn-primary">Submit</button>
+    
+        
+      </div> 
+
+</form>
